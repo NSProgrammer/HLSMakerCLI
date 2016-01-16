@@ -25,6 +25,8 @@
  For mediafilesegmenter, see https://developer.apple.com/downloads/index.action?=http%20live%20streaming%20tools
  */
 
+extern NSString * const HMBinaryDirectoryPathDefault;
+
 @interface HMArgs : NSObject
 
 @property (nonatomic, copy) NSString* executablePath;
@@ -32,8 +34,8 @@
 @property (nonatomic, copy) NSString* outputDirectory;  // -o default is current execution directory
 @property (nonatomic, copy) NSString* baseName;         // -b default is outputDirectory.lastPathComponent
 @property (nonatomic, copy) NSArray* hlsTypes;          // -t NSArray<NSNumber<HLSType>> ; default is ALL HLSTypes
-@property (nonatomic, copy) NSString* handbrakePath;    // -h default tries current execution directory, then /usr/bin
-@property (nonatomic, copy) NSString* mediafilesegmenterPath; // -m default tries current execution directory, then /usr/bin
+@property (nonatomic, copy) NSString* handbrakePath;    // -h default tries current execution directory, then /usr/local/bin
+@property (nonatomic, copy) NSString* mediafilesegmenterPath; // -m default tries current execution directory, then /usr/local/bin
 
 - (NSArray*) validate; // returns an array of errors
 

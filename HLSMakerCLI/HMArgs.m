@@ -21,6 +21,8 @@
 #import "HMArgs.h"
 #import "HLSSettings.h"
 
+NSString * const HMBinaryDirectoryPathDefault = @"/usr/local/bin";
+
 @implementation HMArgs
 
 - (NSArray*) validate
@@ -43,7 +45,7 @@
         }
         else
         {
-            path = [@"/usr/bin" stringByAppendingPathComponent:file];
+            path = [HMBinaryDirectoryPathDefault stringByAppendingPathComponent:file];
             if ([fm fileExistsAtPath:path])
             {
                 self.handbrakePath = path;
@@ -60,7 +62,7 @@
         }
         else
         {
-            path = [@"/usr/bin" stringByAppendingPathComponent:file];
+            path = [HMBinaryDirectoryPathDefault stringByAppendingPathComponent:file];
             if ([fm fileExistsAtPath:path])
             {
                 self.mediafilesegmenterPath = path;
@@ -106,11 +108,11 @@
     }
 
     if (hlsFail)
-        [errors addObject:[NSError errorWithDomain:NSArgumentDomain code:EINVAL userInfo:@{ @"argument" : @"-t", @"value" : self.hlsTypes}]];
+        [errors addObject:[NSError errorWithDomain:NSArgumentDomain code:EINVAL userInfo:@{ @"argument" : @"-t", @"value" : self.hlsTypes ?: @"???"}]];
     if (![fm fileExistsAtPath:self.handbrakePath isDirectory:&isDir] || isDir)
-        [errors addObject:[NSError errorWithDomain:NSArgumentDomain code:EINVAL userInfo:@{ @"argument" : @"-h", @"value" : self.handbrakePath}]];
+        [errors addObject:[NSError errorWithDomain:NSArgumentDomain code:EINVAL userInfo:@{ @"argument" : @"-h", @"value" : self.handbrakePath ?: @"???"}]];
     if (![fm fileExistsAtPath:self.mediafilesegmenterPath isDirectory:&isDir] || isDir)
-        [errors addObject:[NSError errorWithDomain:NSArgumentDomain code:EINVAL userInfo:@{ @"argument" : @"-m", @"value" : self.mediafilesegmenterPath}]];
+        [errors addObject:[NSError errorWithDomain:NSArgumentDomain code:EINVAL userInfo:@{ @"argument" : @"-m", @"value" : self.mediafilesegmenterPath ?: @"???"}]];
 
     return errors;
 }

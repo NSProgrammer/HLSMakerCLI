@@ -152,8 +152,8 @@ break; \
            "\t-o\tThe output directory where the output files will live\n\n"\
            "\t-b\tThe base name for files created in the output directory, default is the output directory's name\n\n"\
            "\t-t\tA comma separated string of the desired HTTP Live Streams based on their speed in kilobits per second\n\t\t(possible values: 64,150,320,640,1280,1920,2560  - default is ALL)\n\n"\
-           "\t-h\tThe location on disk of the HandBrakeCLI executable - default will check the current directory then the /usr/bin directory.  See http://handbrake.fr\n\n"\
-           "\t-m\tThe location on disk of the mediafilesegmenter executable - default will check the current directory then the /usr/bin directory.  See https://developer.apple.com/downloads/index.action?=http%%20live%%20streaming%%20tools\n\n", self.args.executablePath.lastPathComponent.UTF8String);
+           "\t-h\tThe location on disk of the HandBrakeCLI executable - default will check the current directory then the %@ directory.  See http://handbrake.fr\n\n"\
+           "\t-m\tThe location on disk of the mediafilesegmenter executable - default will check the current directory then the %@ directory.  See https://developer.apple.com/downloads/index.action?=http%%20live%%20streaming%%20tools\n\n", self.args.executablePath.lastPathComponent.UTF8String, HMBinaryDirectoryPathDefault.UTF8String, HMBinaryDirectoryPathDefault.UTF8String);
 }
 
 + (int) execute:(const char**)argv count:(int)argc
